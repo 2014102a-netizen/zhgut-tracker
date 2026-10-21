@@ -3,7 +3,7 @@
  * Веб-приложение поверх Google Таблицы: страница на GitHub Pages читает строки (GET)
  * и сохраняет изменения (POST). Таблица остаётся источником данных — её можно править и руками.
  *
- * Установка: Таблица → Расширения → Apps Script → вставить этот файл →
+ * Установка: Таблица → Расширения → Apps Script (или script.google.com → Новый проект) → вставить этот файл →
  * поменять WRITE_KEY → Развернуть → Новое развёртывание → Веб-приложение
  * (Запуск от имени: Я; Доступ: Все) → скопировать URL в config.js.
  */
@@ -85,8 +85,12 @@ function readRows_() {
     });
 }
 
+// ID таблицы «ЖГУТ 575G — трекер комплекта на сертификацию»: скрипт работает
+// и из меню таблицы (Расширения → Apps Script), и как отдельный проект на script.google.com.
+const SPREADSHEET_ID = '1k7qDf6qp73zxDllb9hUN9ODE_OfMYdSDQD0vj5GnIpo';
+
 function sheet_() {
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
   return ss.getSheetByName(SHEET_NAME) || ss.getSheets()[0];
 }
 
