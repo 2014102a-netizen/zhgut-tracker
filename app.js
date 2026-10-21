@@ -52,8 +52,16 @@
     return (list || []).map(r => ({
       id: String(r.id), group: String(r.group || 'other'), order: Number(r.order) || 0,
       code: r.code === '' || r.code == null ? '' : String(r.code), name: String(r.name || ''),
-      who: String(r.who || ''), status: String(r.status || 'нет'), note: String(r.note || ''), updated: String(r.updated || '')
+      who: String(r.who || ''), status: String(r.status || 'нет'), note: String(r.note || ''), updated: fmtDate(r.updated)
     })).sort((a, b) => a.order - b.order);
+  }
+
+  function fmtDate(v) {
+    const s = String(v || '');
+    if (!/^\d{4}-\d{2}-\d{2}T/.test(s)) return s;
+    const d = new Date(s);
+    if (isNaN(d)) return s;
+    return d.toLocaleString('ru-RU', { timeZone: 'Europe/Moscow', day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
   }
 
   async function post(body) {
