@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Комплект ЖГУТ 575G</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: реестр документов — сводка сверху, затем группы строк «код · документ · кто · статус · чего не хватает» */
+:root{
+  --bg:#f3f4f5; --surface:#ffffff; --fg:#1b2226; --muted:#5c676e; --line:#d9dde0; --soft:#eceef0;
+  --accent:#c4352b;
+  --ok:#2f7d4f; --ok-bg:#e3f1e8;
+  --draft:#93650f; --draft-bg:#f7edd6;
+  --no:#b3261e; --no-bg:#f8e1df;
+  --wait:#2d5f8a; --wait-bg:#e0ebf4;
+  --f-display:"IBM Plex Sans Condensed","Arial Narrow",Arial,sans-serif;
+  --f-body:"IBM Plex Sans",-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12171a; --surface:#1a2024; --fg:#e4e8ea; --muted:#9aa5ab; --line:#2c353a; --soft:#222a2f;
+  --accent:#ef5a4c;
+  --ok:#6cc58f; --ok-bg:#1d3326; --draft:#e2b25a; --draft-bg:#3a2f17; --no:#f0786d; --no-bg:#3d1f1c; --wait:#7fb1de; --wait-bg:#1c2d3c;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12171a; --surface:#1a2024; --fg:#e4e8ea; --muted:#9aa5ab; --line:#2c353a; --soft:#222a2f;
+  --accent:#ef5a4c;
+  --ok:#6cc58f; --ok-bg:#1d3326; --draft:#e2b25a; --draft-bg:#3a2f17; --no:#f0786d; --no-bg:#3d1f1c; --wait:#7fb1de; --wait-bg:#1c2d3c;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:14px/1.45 var(--f-body);margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding-block:20px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:18px}
+header{display:grid;gap:4px}
+.eyebrow{font:500 11px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font:600 28px/1.1 var(--f-display);margin:0;text-wrap:balance}
+.sub{color:var(--muted);max-width:70ch;margin:0}
+.summary{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:10px 14px;min-width:110px;display:grid;gap:2px}
+.tile b{font:600 22px/1 var(--f-mono);font-variant-numeric:tabular-nums}
+.tile span{font-size:12px;color:var(--muted)}
+.tile.block{border-color:var(--accent)}
+.tile.block b{color:var(--accent)}
+.filters{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chip{font:500 12px/1 var(--f-body);border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:7px 11px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.chip:focus-visible,select:focus-visible,input:focus-visible,button:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.sep{width:1px;height:20px;background:var(--line);margin:0 4px}
+section.group{background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+section.group.blocker{border-color:color-mix(in srgb,var(--accent) 55%,var(--line))}
+.ghead{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:12px 14px;border-bottom:1px solid var(--line);background:var(--soft)}
+.ghead h2{font:600 16px/1.2 var(--f-display);margin:0;letter-spacing:.01em}
+.blocker .ghead h2{color:var(--accent)}
+.ghead small{color:var(--muted);font:12px var(--f-mono);font-variant-numeric:tabular-nums}
+.row,.cols{display:grid;grid-template-columns:62px minmax(0,1.15fr) 118px 116px minmax(0,1.5fr) 34px;gap:10px;align-items:start;padding:9px 14px}
+.cols{font:500 11px/1 var(--f-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted);padding-block:8px;border-bottom:1px solid var(--line)}
+.row+.row{border-top:1px solid var(--line)}
+.code{font:500 12px/1.9 var(--f-mono);color:var(--muted)}
+.name{font-weight:500;padding-top:4px;min-width:0;overflow-wrap:anywhere}
+select,input,textarea{font:inherit;color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:5px;padding:5px 7px;width:100%}
+textarea{resize:vertical;min-height:32px;line-height:1.35}
+select.status{font-weight:600;border-color:transparent}
+.s-готово{background:var(--ok-bg);color:var(--ok)}
+.s-проект{background:var(--draft-bg);color:var(--draft)}
+.s-нет{background:var(--no-bg);color:var(--no)}
+.s-ждём{background:var(--wait-bg);color:var(--wait)}
+.del{border:1px solid transparent;background:none;color:var(--muted);border-radius:5px;cursor:pointer;height:30px;font-size:16px}
+.del:hover{color:var(--accent);border-color:var(--line)}
+.del.confirm{color:#fff;background:var(--accent);font-size:11px;width:auto;padding:0 6px}
+.row.done .name{color:var(--muted)}
+.empty{padding:14px;color:var(--muted)}
+form.add{background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:14px;display:grid;gap:10px}
+form.add h3{margin:0;font:600 15px var(--f-display)}
+.addgrid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1.6fr) 130px 120px;gap:8px}
+.addgrid .full{grid-column:1/-1}
+.btn{font:600 13px var(--f-body);background:var(--fg);color:var(--bg);border:0;border-radius:6px;padding:9px 14px;cursor:pointer;justify-self:start}
+.btn:disabled{opacity:.5;cursor:default}
+.keybar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:12px;color:var(--muted)}
+.keybar input{width:200px}
+.keybar .btn{padding:6px 10px;font-size:12px}
+.status-line{font-size:12px;color:var(--muted);min-height:16px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted)}
+.dot{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+@media (max-width:760px){
+  .cols{display:none}
+  .row{grid-template-columns:52px minmax(0,1fr) minmax(0,1fr) 34px;grid-template-areas:"code name name del" "who who status status" "note note note note"}
+  .row .code{grid-area:code}.row .name{grid-area:name}.row .who{grid-area:who}.row .st{grid-area:status}.row .note{grid-area:note}.row .delcell{grid-area:del}
+  .addgrid{grid-template-columns:1fr 1fr}
+  .addgrid .wide{grid-column:1/-1}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">ТР ТС 026/2012 · Русский Регистр — Балтийская инспекция · схема 1с</div>
+    <h1>Комплект на сертификацию «ЖГУТ 575G»</h1>
+    <p class="sub">Что готово по списку приложения к заявке, что делает Иван, Игорь, ОС, и чего не хватает. Данные лежат в Google Таблице: статус и примечание можно менять здесь или прямо в таблице.</p>
+  </header>
+
+  <div class="keybar" id="keybar">
+    <span id="keyState">Только просмотр.</span>
+    <label for="keyInput" style="display:none">Ключ для правок</label>
+    <input id="keyInput" type="password" placeholder="Ключ для правок" autocomplete="off">
+    <button class="btn" type="button" id="keyBtn">Войти</button>
+    <span id="sync"></span>
+  </div>
+
+  <div class="summary" id="summary" aria-live="polite"></div>
+
+  <div class="filters" role="group" aria-label="Фильтр">
+    <span class="eyebrow">Кто</span>
+    <span id="whoChips" style="display:contents"></span>
+    <span class="sep"></span>
+    <button class="chip" id="openOnly" aria-pressed="false" type="button">Только незакрытые</button>
+  </div>
+
+  <div class="legend">
+    <span><i class="dot" style="background:var(--ok)"></i>готово — можно подавать</span>
+    <span><i class="dot" style="background:var(--draft)"></i>проект — есть, но в нём пробелы</span>
+    <span><i class="dot" style="background:var(--no)"></i>нет — документа нет</span>
+    <span><i class="dot" style="background:var(--wait)"></i>ждём — зависит от другого человека или организации</span>
+  </div>
+
+  <div id="groups"><div class="empty" id="loading">Загружаю список документов…</div></div>
+
+  <form class="add" id="addForm" autocomplete="off">
+    <h3>Добавить строку</h3>
+    <div class="addgrid">
+      <select id="addGroup" aria-label="Группа" class="wide"></select>
+      <input id="addName" placeholder="Документ или вопрос" aria-label="Документ или вопрос" class="wide" required>
+      <select id="addWho" aria-label="Кто делает"></select>
+      <select id="addStatus" aria-label="Статус"></select>
+      <input id="addCode" placeholder="Код (необязательно)" aria-label="Код">
+      <textarea id="addNote" class="full" placeholder="Чего не хватает" aria-label="Чего не хватает" rows="2"></textarea>
+    </div>
+    <button class="btn" type="submit" id="addBtn">Добавить</button>
+    <div class="status-line" id="msg"></div>
+  </form>
+</div>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
